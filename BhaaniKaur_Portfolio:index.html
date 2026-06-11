@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bhaani Kaur — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --plum:       #2D1A2E;
+    --plum-deep:  #1A0F1B;
+    --plum-mid:   #3D2440;
+    --rose:       #C4857A;
+    --rose-light: #D4A09A;
+    --cream:      #F5EFE6;
+    --cream-muted:#D8CFBE;
+    --card:       #231430;
+    --border:     rgba(196,133,122,0.2);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--plum);
+    color: var(--cream);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* ── LAYOUT ── */
+  .layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    min-height: 100vh;
+  }
+
+  /* ── SIDEBAR ── */
+  nav {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 48px 32px;
+    border-right: 1px solid var(--border);
+    background: var(--plum-deep);
+  }
+
+  .monogram {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--rose);
+    line-height: 1;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+  }
+
+  .nav-subtitle {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--cream-muted);
+    margin-bottom: 40px;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--cream-muted);
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: all 0.2s;
+    display: block;
+  }
+
+  .nav-links a:hover, .nav-links a.active {
+    color: var(--cream);
+    background: rgba(196,133,122,0.12);
+    border-left: 2px solid var(--rose);
+    padding-left: 14px;
+  }
+
+  .nav-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav-contact a {
+    font-size: 11px;
+    color: var(--cream-muted);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s;
+  }
+
+  .nav-contact a:hover { color: var(--rose-light); }
+
+  .nav-contact svg { flex-shrink: 0; }
+
+  /* ── MAIN ── */
+  main { overflow-x: hidden; }
+
+  section {
+    padding: 96px 72px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  section:last-child { border-bottom: none; }
+
+  /* ── HERO ── */
+  #hero {
+    padding: 120px 72px 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    position: relative;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 24px;
+    font-weight: 500;
+  }
+
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 7vw, 88px);
+    font-weight: 300;
+    line-height: 1.0;
+    letter-spacing: -1px;
+    color: var(--cream);
+    margin-bottom: 24px;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--rose-light);
+  }
+
+  .hero-descriptor {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--cream-muted);
+    max-width: 520px;
+    line-height: 1.8;
+    margin-bottom: 48px;
+  }
+
+  .hero-descriptor strong {
+    color: var(--cream);
+    font-weight: 500;
+  }
+
+  .hero-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 52px;
+  }
+
+  .pill {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 7px 16px;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    color: var(--cream-muted);
+    background: rgba(255,255,255,0.03);
+  }
+
+  .cta-row { display: flex; gap: 16px; flex-wrap: wrap; }
+
+  .btn {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 14px 28px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--rose);
+    color: var(--plum-deep);
+  }
+  .btn-primary:hover { background: var(--rose-light); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--cream);
+    border: 1px solid var(--border);
+  }
+  .btn-ghost:hover { border-color: var(--rose); color: var(--rose-light); }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 48px;
+    left: 72px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--cream-muted);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .scroll-line {
+    width: 40px;
+    height: 1px;
+    background: var(--rose);
+  }
+
+  /* ── SECTION HEADINGS ── */
+  .section-eyebrow {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--rose);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 52px);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--cream);
+    margin-bottom: 48px;
+  }
+
+  .section-title em { font-style: italic; color: var(--rose-light); }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .about-text p {
+    font-size: 15px;
+    line-height: 1.85;
+    color: var(--cream-muted);
+    margin-bottom: 20px;
+  }
+
+  .about-text p:last-child { margin-bottom: 0; }
+
+  .about-text strong { color: var(--cream); font-weight: 500; }
+
+  .about-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px 28px;
+  }
+
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 300;
+    color: var(--rose-light);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: var(--cream-muted);
+    text-transform: uppercase;
+  }
+
+  /* ── EXPERIENCE ── */
+  .exp-list { display: flex; flex-direction: column; gap: 2px; }
+
+  .exp-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 28px 32px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    align-items: start;
+    transition: border-color 0.2s;
+    margin-bottom: 12px;
+  }
+
+  .exp-item:hover { border-color: var(--rose); }
+
+  .exp-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--cream);
+    margin-bottom: 4px;
+  }
+
+  .exp-company {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 12px;
+  }
+
+  .exp-desc {
+    font-size: 14px;
+    color: var(--cream-muted);
+    line-height: 1.7;
+  }
+
+  .exp-date {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: var(--cream-muted);
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-align: right;
+    padding-top: 4px;
+  }
+
+  .exp-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+  }
+
+  .tag {
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 4px;
+    background: rgba(196,133,122,0.1);
+    color: var(--rose-light);
+    border: 1px solid rgba(196,133,122,0.2);
+  }
+
+  /* ── PROJECTS ── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+
+  .project-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 32px;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--rose);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+    transform-origin: left;
+  }
+
+  .project-card:hover { border-color: rgba(196,133,122,0.5); transform: translateY(-3px); }
+  .project-card:hover::before { transform: scaleX(1); }
+
+  .project-category {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--rose);
+    margin-bottom: 14px;
+  }
+
+  .project-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--cream);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .project-desc {
+    font-size: 13.5px;
+    color: var(--cream-muted);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .project-highlight {
+    background: rgba(196,133,122,0.08);
+    border-left: 2px solid var(--rose);
+    padding: 10px 14px;
+    border-radius: 0 4px 4px 0;
+    font-size: 12.5px;
+    color: var(--rose-light);
+    font-style: italic;
+    margin-bottom: 20px;
+  }
+
+  .project-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  .btn-deck {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    border: 1px solid var(--rose);
+    color: var(--rose-light);
+    background: transparent;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  .btn-deck:hover {
+    background: rgba(196,133,122,0.12);
+    color: var(--cream);
+  }
+
+  .btn-deck svg { flex-shrink: 0; }
+
+  /* ── RESEARCH ── */
+  .research-list { display: flex; flex-direction: column; gap: 16px; }
+
+  .research-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 28px 32px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: center;
+    transition: border-color 0.2s;
+  }
+
+  .research-item:hover { border-color: var(--rose); }
+
+  .research-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--cream);
+    margin-bottom: 8px;
+  }
+
+  .research-abstract {
+    font-size: 13.5px;
+    color: var(--cream-muted);
+    line-height: 1.7;
+  }
+
+  .research-date {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--cream-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  /* ── SKILLS ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+  }
+
+  .skill-group {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+  }
+
+  .skill-group-name {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--rose);
+    margin-bottom: 14px;
+  }
+
+  .skill-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .skill-item {
+    font-size: 13px;
+    color: var(--cream-muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .skill-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--rose);
+    flex-shrink: 0;
+  }
+
+  /* ── CREATIVE ── */
+  .creative-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .creative-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 28px 32px;
+  }
+
+  .creative-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 10px;
+  }
+
+  .creative-desc {
+    font-size: 13.5px;
+    color: var(--cream-muted);
+    line-height: 1.7;
+  }
+
+  /* ── CONTACT ── */
+  #contact { min-height: 60vh; display: flex; flex-direction: column; justify-content: center; }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .contact-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--cream);
+    margin-bottom: 24px;
+  }
+
+  .contact-tagline em { font-style: italic; color: var(--rose-light); }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--cream);
+    transition: all 0.2s;
+    font-size: 14px;
+  }
+
+  .contact-link:hover { border-color: var(--rose); color: var(--rose-light); }
+
+  .contact-link-icon {
+    width: 36px;
+    height: 36px;
+    background: rgba(196,133,122,0.1);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  /* ── DIVIDER ── */
+  .ornament {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  .ornament-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .ornament-icon {
+    color: var(--rose);
+    font-size: 16px;
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    nav {
+      position: static;
+      height: auto;
+      flex-direction: row;
+      flex-wrap: wrap;
+      padding: 24px;
+      gap: 16px;
+    }
+    .nav-links { flex-direction: row; flex-wrap: wrap; }
+    section, #hero { padding: 64px 28px; }
+    .about-grid, .contact-grid, .creative-grid { grid-template-columns: 1fr; }
+    .exp-item { grid-template-columns: 1fr; }
+    .hero-scroll { display: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- SIDEBAR NAV -->
+  <nav>
+    <div>
+      <div class="monogram">BK</div>
+      <div class="nav-subtitle">Portfolio</div>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#creative">Creative</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="nav-contact">
+      <a href="mailto:bhaani_kaur@berkeley.edu">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        bhaani_kaur@berkeley.edu
+      </a>
+      <a href="https://linkedin.com/in/bhaanikaur" target="_blank">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main>
+
+    <!-- HERO -->
+    <section id="hero">
+      <div class="hero-eyebrow">UC Berkeley · Haas School of Business</div>
+      <h1 class="hero-name">Bhaani<br><em>Kaur</em></h1>
+      <p class="hero-descriptor">
+        Strategy and brand consultant with a foundation in <strong>research, consumer insights, and market analysis</strong>. I turn data and qualitative findings into clear strategic direction across entertainment, consumer, and health sectors.
+      </p>
+      <div class="hero-pills">
+        <span class="pill">Strategy &amp; Consulting</span>
+        <span class="pill">Brand Strategy</span>
+        <span class="pill">Consumer Insights</span>
+        <span class="pill">Market Research</span>
+        <span class="pill">Entertainment</span>
+      </div>
+      <div class="cta-row">
+        <a href="#projects" class="btn btn-primary">View Work</a>
+        <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+      </div>
+      <div class="hero-scroll">
+        <div class="scroll-line"></div>
+        <span>Scroll</span>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="section-eyebrow">About Me</div>
+      <h2 class="section-title">Turning research<br>into <em>strategy</em></h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>I'm a rising junior at UC Berkeley's Haas School of Business studying Business Administration with a focus on <strong>strategy, brand consulting, and consumer insights</strong>.</p>
+          <p>I've always been drawn to understanding people — how they discover products, build trust, and form communities. That curiosity drives my approach to consulting: I combine rigorous primary research with sharp strategic thinking to help brands identify opportunities and act on them clearly.</p>
+          <p>Through <strong>BCEC (Business Careers in Entertainment)</strong> at Haas, I've led end-to-end consulting engagements for consumer brands across health, beauty, and entertainment — running surveys, focus groups, competitive analysis, and delivering actionable recommendations to brand leadership. I'm also gaining cross-functional experience as a PM at Parkyresource.org, where I own the product roadmap and translate user research into execution.</p>
+          <p>I'm drawn to work that sits at the intersection of <strong>data, storytelling, and execution</strong> — where a well-researched insight becomes a decision that actually moves a brand forward.</p>
+        </div>
+        <div class="about-stats">
+          <div class="stat-card">
+            <div class="stat-number">3.86</div>
+            <div class="stat-label">GPA · UC Berkeley</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">2027</div>
+            <div class="stat-label">Expected Graduation</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">2</div>
+            <div class="stat-label">Apps as Founding PM</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="section-eyebrow">Experience</div>
+      <h2 class="section-title">Where I've<br><em>worked</em></h2>
+      <div class="exp-list">
+
+        <div class="exp-item">
+          <div>
+            <div class="exp-role">Brand Strategy Consultant</div>
+            <div class="exp-company">BCEC (Business Careers in Entertainment) · Wellbel</div>
+            <div class="exp-desc">
+              Led a full-semester consulting engagement for Wellbel, a physician-formulated hair wellness brand. Designed and executed primary research across 457 survey responses and 6 focus groups, synthesized behavioral insights across Gen Z consumer segments, audited the brand's social and digital presence, evaluated three ambassador platforms (ShopMy, BrandChamp, Home From College), and delivered a set of actionable on-campus activation strategies and ambassador program recommendations directly to brand leadership.
+            </div>
+            <div class="exp-tags">
+              <span class="tag">Market Research</span>
+              <span class="tag">Consumer Insights</span>
+              <span class="tag">Brand Strategy</span>
+              <span class="tag">Competitive Analysis</span>
+              <span class="tag">Ambassador Programs</span>
+            </div>
+          </div>
+          <div class="exp-date">Fall 2025</div>
+        </div>
+
+        <div class="exp-item">
+          <div>
+            <div class="exp-role">Brand Strategy Consultant</div>
+            <div class="exp-company">BCEC · Never Have I Ever (NHIE)</div>
+            <div class="exp-desc">
+              Developed a comprehensive growth strategy for Never Have I Ever, an entertainment-adjacent consumer brand spanning press-on nails and tooth gems. Conducted deep-dive market research on two product categories, ran surveys (206 responses) and 14-day focus groups, performed competitor analysis against imPRESS and Glamnetic, mapped Berkeley micro and macro influencers, and presented three campus activation concepts. Delivered a full ambassador program structure including handbook, outreach strategy, and roles and responsibilities framework.
+            </div>
+            <div class="exp-tags">
+              <span class="tag">Growth Strategy</span>
+              <span class="tag">Market Research</span>
+              <span class="tag">Focus Groups</span>
+              <span class="tag">Competitive Analysis</span>
+              <span class="tag">Entertainment</span>
+            </div>
+          </div>
+          <div class="exp-date">Fall 2025</div>
+        </div>
+
+        <div class="exp-item">
+          <div>
+            <div class="exp-role">Brand &amp; Marketing</div>
+            <div class="exp-company">Olipop</div>
+            <div class="exp-desc">
+              Supported brand and consumer marketing initiatives at one of the fastest-growing better-for-you beverage brands. Contributed to campaign planning and consumer engagement strategy.
+            </div>
+            <div class="exp-tags">
+              <span class="tag">CPG</span>
+              <span class="tag">Brand Marketing</span>
+              <span class="tag">Consumer</span>
+            </div>
+          </div>
+          <div class="exp-date">Spring 2026</div>
+        </div>
+
+        <div class="exp-item">
+          <div>
+            <div class="exp-role">Product Manager</div>
+            <div class="exp-company">Parkyresource.org</div>
+            <div class="exp-desc">
+              Serving as founding PM for an early-stage mobile app designed to help Parkinson's patients track symptoms and surface insights for clinical conversations. Conducting user research with patients and caregivers, defining the product roadmap, and translating qualitative feedback into prioritized requirements — building cross-functional experience in user research, stakeholder management, and strategic prioritization.
+            </div>
+            <div class="exp-tags">
+              <span class="tag">User Research</span>
+              <span class="tag">Stakeholder Management</span>
+              <span class="tag">Strategic Planning</span>
+              <span class="tag">Health Tech</span>
+            </div>
+          </div>
+          <div class="exp-date">Summer 2026</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-eyebrow">Projects</div>
+      <h2 class="section-title">Selected<br><em>work</em></h2>
+      <div class="projects-grid">
+
+        <div class="project-card">
+          <div class="project-category">Brand Marketing · Campaign</div>
+          <div class="project-title">Olipop Brand Work</div>
+          <div class="project-desc">Contributed to brand and consumer marketing initiatives at Olipop, one of the fastest-growing better-for-you beverage brands. Supported campaign planning, consumer engagement strategy, and brand positioning work targeting Gen Z and millennial audiences.</div>
+          <div class="project-highlight">Hands-on marketing experience at a category-defining CPG brand.</div>
+          <div class="project-footer">
+            <div class="exp-tags" style="margin-top:0">
+              <span class="tag">CPG</span>
+              <span class="tag">Brand Marketing</span>
+              <span class="tag">Consumer</span>
+            </div>
+            <a href="https://canva.link/92c3qzunvsfmo7y" target="_blank" class="btn-deck">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              View Deck
+            </a>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-category">Brand Strategy · Consulting</div>
+          <div class="project-title">Wellbel Market Analysis</div>
+          <div class="project-desc">End-to-end market analysis including primary research via surveys and focus groups, ambassador program evaluation, and recommended on-campus activation roadmap.</div>
+          <div class="project-highlight">Delivered to Wellbel brand leadership via BCEC.</div>
+          <div class="project-footer">
+            <div class="exp-tags" style="margin-top:0">
+              <span class="tag">Market Analysis</span>
+              <span class="tag">Consumer Research</span>
+              <span class="tag">Beauty &amp; Wellness</span>
+            </div>
+            <a href="https://canva.link/d4gsvv6jsbvzshy" target="_blank" class="btn-deck">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              View Deck
+            </a>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-category">Growth Strategy · Consulting</div>
+          <div class="project-title">NHIE Growth Strategy</div>
+          <div class="project-desc">Comprehensive growth strategy for Never Have I Ever, covering press-on nails and tooth gems market research, survey findings, and an ambassador platform recommendation.</div>
+          <div class="project-highlight">Multi-channel growth plan for an entertainment-adjacent consumer brand.</div>
+          <div class="project-footer">
+            <div class="exp-tags" style="margin-top:0">
+              <span class="tag">Growth</span>
+              <span class="tag">Market Research</span>
+              <span class="tag">Entertainment</span>
+            </div>
+            <a href="https://canva.link/fm001lwknekswkb" target="_blank" class="btn-deck">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              View Deck
+            </a>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-category">Case Competition · Strategy</div>
+          <div class="project-title">Omaha Productions: Winning Case Deck</div>
+          <div class="project-desc">Developed a $1M multi-channel content strategy with projected $5.25M in three-year revenue at ~32% margins. Presented live to judges.</div>
+          <div class="project-highlight">First-place finish against competing Haas teams.</div>
+          <div class="project-footer">
+            <div class="exp-tags" style="margin-top:0">
+              <span class="tag">Content Strategy</span>
+              <span class="tag">Financial Modeling</span>
+              <span class="tag">Entertainment</span>
+            </div>
+            <a href="https://docs.google.com/presentation/d/1Fnp5XGqesxQR3leFq_JdBLnihaL6mWJVTFGR32ovCck/edit?usp=sharing" target="_blank" class="btn-deck">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              View Deck
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- RESEARCH -->
+    <section id="research">
+      <div class="section-eyebrow">Research</div>
+      <h2 class="section-title">How I turn curiosity<br>into <em>insight</em></h2>
+      <div class="research-list">
+
+        <div class="research-item">
+          <div>
+            <div class="research-title">AI-Based Mobile Health Applications for OCD</div>
+            <div class="research-abstract">Examines the use of AI-powered mobile health apps in managing OCD, arguing they offer scalable, personalized, real-time support. Explores continuous symptom monitoring, predictive analytics, and AI-enhanced CBT interventions, alongside key considerations around ethics, transparency, and clinical validation.</div>
+            <div class="exp-tags" style="margin-top:14px">
+              <span class="tag">Health Tech</span>
+              <span class="tag">AI / ML</span>
+              <span class="tag">Mobile Health</span>
+            </div>
+          </div>
+          <div class="research-date">Jan 2025</div>
+        </div>
+
+        <div class="research-item">
+          <div>
+            <div class="research-title">Monetizing Childhood: Ethical &amp; Business Implications of Child Influencers</div>
+            <div class="research-abstract">Analyzes the "kidfluencer" economy as a high-ROI, algorithm-driven segment of influencer marketing. Argues for treating child creator work as formal labor, establishing clearer standards for compensation, consent, and platform accountability to ensure ethical and sustainable practices.</div>
+            <div class="exp-tags" style="margin-top:14px">
+              <span class="tag">Ethics</span>
+              <span class="tag">Influencer Marketing</span>
+              <span class="tag">Entertainment</span>
+            </div>
+          </div>
+          <div class="research-date">Nov 2025</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="section-eyebrow">Skills</div>
+      <h2 class="section-title">What I bring<br>to the <em>table</em></h2>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <div class="skill-group-name">Consulting</div>
+          <div class="skill-list">
+            <div class="skill-item"><span class="skill-dot"></span>Market Research</div>
+            <div class="skill-item"><span class="skill-dot"></span>Competitive Analysis</div>
+            <div class="skill-item"><span class="skill-dot"></span>Consumer Insights</div>
+            <div class="skill-item"><span class="skill-dot"></span>Strategic Frameworks</div>
+            <div class="skill-item"><span class="skill-dot"></span>Client Presentations</div>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-name">Research</div>
+          <div class="skill-list">
+            <div class="skill-item"><span class="skill-dot"></span>Survey Design</div>
+            <div class="skill-item"><span class="skill-dot"></span>Focus Groups</div>
+            <div class="skill-item"><span class="skill-dot"></span>Qualitative Analysis</div>
+            <div class="skill-item"><span class="skill-dot"></span>SQL</div>
+            <div class="skill-item"><span class="skill-dot"></span>Excel / Sheets</div>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-name">Strategy</div>
+          <div class="skill-list">
+            <div class="skill-item"><span class="skill-dot"></span>Brand Strategy</div>
+            <div class="skill-item"><span class="skill-dot"></span>Go-to-Market</div>
+            <div class="skill-item"><span class="skill-dot"></span>Growth Strategy</div>
+            <div class="skill-item"><span class="skill-dot"></span>Financial Modeling</div>
+            <div class="skill-item"><span class="skill-dot"></span>Stakeholder Management</div>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-name">Industry Focus</div>
+          <div class="skill-list">
+            <div class="skill-item"><span class="skill-dot"></span>Entertainment &amp; Media</div>
+            <div class="skill-item"><span class="skill-dot"></span>Consumer / CPG</div>
+            <div class="skill-item"><span class="skill-dot"></span>Beauty &amp; Wellness</div>
+            <div class="skill-item"><span class="skill-dot"></span>Health Tech</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CREATIVE -->
+    <section id="creative">
+      <div class="section-eyebrow">Creative</div>
+      <h2 class="section-title">What I love doing<br>in my <em>free time</em></h2>
+      <div class="creative-grid">
+        <div class="creative-card">
+          <div class="creative-title">Bhangra</div>
+          <div class="creative-desc">Competitive Bhangra dancer, performed at Vraat 2024 and other university showcases. Dance has been a constant through college and a meaningful way to stay connected to community and culture.</div>
+        </div>
+        <div class="creative-card">
+          <div class="creative-title">Music</div>
+          <div class="creative-desc">Pianist and harmonium player with a deep interest in the intersection of western and Indian classical music. That curiosity led to creating an original album blending both traditions. Music has always been a creative outlet and a way to decompress, the kind of practice that rewards patience and genuine listening.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-eyebrow">Contact</div>
+      <div class="contact-grid">
+        <div>
+          <div class="contact-tagline">Let's work<br>on something <em>meaningful</em><br>together.</div>
+        </div>
+        <div class="contact-links">
+          <a href="mailto:bhaani_kaur@berkeley.edu" class="contact-link">
+            <div class="contact-link-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </div>
+            bhaani_kaur@berkeley.edu
+          </a>
+          <a href="https://linkedin.com/in/bhaanikaur" target="_blank" class="contact-link">
+            <div class="contact-link-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </div>
+            LinkedIn, Bhaani Kaur
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  // Active nav highlighting
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => link.classList.remove('active'));
+        const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { threshold: 0.3 });
+
+  sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
